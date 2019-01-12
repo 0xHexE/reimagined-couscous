@@ -1,0 +1,34 @@
+<h1 mat-dialog-title>Import data</h1>
+<div mat-dialog-content>
+  <p>It will override the data if id is already exist!</p>
+  <div style="display: flex; flex-direction: column">
+    <input type="file" accept="text/csv" (change)="parseFile($event)">
+  </div>
+
+  <mat-progress-bar mode="determinate" *ngIf="percentage !== 0" [value]="percentage"></mat-progress-bar>
+
+  <p *ngIf="preview && preview.length !== 0">Preview</p>
+
+  <div>
+    <table>
+      <tr>
+        <th *ngFor="let header of headers">
+          <mat-checkbox [(ngModel)]=" translateKeys[header] ">
+            {{ header }}
+          </mat-checkbox>
+        </th>
+      </tr>
+      <tr *ngFor="let data of preview">
+        <td *ngFor="let header of headers">
+          {{ data[header] }}
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+<div mat-dialog-actions align="end">
+  <button color="primary"
+          mat-raised-button (click)="importFile()"
+          [disabled]="preview?.length === 0 && !lastFileContent">IMPORT</button>
+</div>

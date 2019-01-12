@@ -1,0 +1,19 @@
+<mat-drawer-container style="min-height: 100vh">
+  <mat-drawer mode="side" opened style="width: 320px;">
+    <mat-list>
+      <mat-list-item *ngFor="let field of fields | async">
+        <mat-checkbox [(ngModel)]="keys[field]">
+          {{ field }}
+        </mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-raised-button (click)="runJob()">FIND DUPLICATE</button>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <table>
+
+    </table>
+  </mat-drawer-content>
+</mat-drawer-container>

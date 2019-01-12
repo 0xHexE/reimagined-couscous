@@ -1,0 +1,12 @@
+<mat-toolbar color="primary" class="mat-elevation-z3">
+  <span>Weddding data</span>
+  <button mat-raised-button routerLink="/duplicate-finder"> Find duplicate </button>
+</mat-toolbar>
+
+Total Data: {{ (data | async)?.length }}
+
+<button mat-fab style="position: fixed; bottom: 24px; right: 24px;" routerLink="import">
+  <mat-icon>
+    add
+  </mat-icon>
+</button>
